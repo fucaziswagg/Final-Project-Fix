@@ -7,7 +7,7 @@
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
-    "predeploy": "vite build --base=/todo-react-bean/",
+    "predeploy": "vite build --base=/Final-Project-Fix/",
     "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
