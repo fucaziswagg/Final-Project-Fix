@@ -2,7 +2,6 @@
   width: 100%;
   background-color: var(--dark-blue);
   color: var(--white);
-  max-width: 1300px;
 }
 
 :root {
@@ -45,7 +44,6 @@ button {
       font-weight: bold;
       padding: 5px;
   }
-
   &:active, &:focus {
       box-shadow: var(--butt-b-shadow-act);
       background: var(--butt-grad-rev);

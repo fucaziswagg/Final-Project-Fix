@@ -57,7 +57,7 @@ function App() {
   }, []);
 
   // DIALOG
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
 
   // Current image
   const [currDog, setCurrDog] = useState('');
@@ -114,6 +114,7 @@ function App() {
   }
 
 
+
   
   // HTML
   return (
@@ -161,11 +162,14 @@ function App() {
               <div id="placement-selection">
                 <p id="placement-message"> Choose Placement: </p>
                 <div id="placement-buttons">
-                    <button id="button1" type="button" onClick={()=> {setIsFirst(true); setCurrDog(dogs[index].message); nextDog();}} className={isFirst ? ("hide"):("")}> 1 </button>
-                    <button id="button2" type="button" onClick={()=> {setIsSecond(true); setCurrDog(dogs[index].message); nextDog();}} className={isSecond ? ("hide"):("")}> 2 </button>
-                    <button id="button3" type="button" onClick={()=> {setIsThird(true); setCurrDog(dogs[index].message); nextDog();}} className={isThird ? ("hide"):("")}> 3 </button>
-                    <button id="button4" type="button" onClick={()=> {setIsFourth(true); setCurrDog(dogs[index].message); nextDog();}} className={isFourth ? ("hide"):("")}> 4 </button>
-                    <button id="button5" type="button" onClick={()=> {setIsFifth(true); setCurrDog(dogs[index].message); nextDog();}} className={isFifth ? ("hide"):("")}> 5 </button>
+                    <button id="button1" type="button" onClick={()=> {
+                      setIsFirst(true); setFirstDog(dogs[index].message); nextDog();
+                      }} 
+                      className={isFirst ? ("hide"):("")}> 1 </button>
+                    <button id="button2" type="button" onClick={()=> {setIsSecond(true); setSecondDog(dogs[index].message); nextDog();}} className={isSecond ? ("hide"):("")}> 2 </button>
+                    <button id="button3" type="button" onClick={()=> {setIsThird(true); setThirdDog(dogs[index].message); nextDog();}} className={isThird ? ("hide"):("")}> 3 </button>
+                    <button id="button4" type="button" onClick={()=> {setIsFourth(true); setFourthDog(dogs[index].message); nextDog();}} className={isFourth ? ("hide"):("")}> 4 </button>
+                    <button id="button5" type="button" onClick={()=> {setIsFifth(true); setFifthDog(dogs[index].message); nextDog();}} className={isFifth ? ("hide"):("")}> 5 </button>
                 </div>
               </div>
 
@@ -177,7 +181,7 @@ function App() {
                   <div id="place1" className="rank-div">
                       <div className="rank-player-info">
                           <figure className="place-figure">
-                              <img src={isFirst ? (currDog):(dogProfileImg)} alt="1st place dog"></img>
+                              <img src={isFirst ? (firstDog):(dogProfileImg)} alt="1st place dog"></img>
                           </figure>
                           <p className="place-name"> Paw-fect! </p>
                       </div>
@@ -186,7 +190,7 @@ function App() {
                   <div id="place2" className="rank-div">
                       <div className="rank-player-info">
                           <figure className="place-figure">
-                              <img src={isSecond ? (currDog):(dogProfileImg)} alt="2nd place dog"></img>
+                              <img src={isSecond ? (secondDog):(dogProfileImg)} alt="2nd place dog"></img>
                           </figure>
                           <p className="place-name"> Cute Fur-real! </p>
                       </div>
@@ -195,7 +199,7 @@ function App() {
                   <div id="place3" className="rank-div">
                       <div className="rank-player-info">
                           <figure className="place-figure">
-                              <img src={isThird ? (currDog):(dogProfileImg)} alt="3rd place dog"></img>
+                              <img src={isThird ? (thirdDog):(dogProfileImg)} alt="3rd place dog"></img>
                           </figure>
                           <p className="place-name"> Hot Dog </p>
                       </div>
@@ -204,7 +208,7 @@ function App() {
                   <div id="place4" className="rank-div">
                       <div className="rank-player-info">
                           <figure className="place-figure">
-                              <img src={isFourth ? (currDog):(dogProfileImg)} alt="4th place dog"></img>
+                              <img src={isFourth ? (fourthDog):(dogProfileImg)} alt="4th place dog"></img>
                           </figure>
                           <p className="place-name"> Dog Gone-It </p>
                       </div>
@@ -213,7 +217,7 @@ function App() {
                   <div id="place5" className="rank-div">
                       <div className="rank-player-info">
                           <figure className="place-figure">
-                              <img src={isFifth ? (currDog):(dogProfileImg)} alt="5th place dog"></img>
+                              <img src={isFifth ? (fifthDog):(dogProfileImg)} alt="5th place dog"></img>
                           </figure>
                           <p className="place-name"> Ruff Day </p>
                       </div>

@@ -1,8 +1,7 @@
 dialog#instructions {
-    max-width: 100vw;
+    max-width: 1260px;
     max-height: 95vh;
     width: 85vw;
-    min-height: 50vh;
     height: fit-content;
     position: fixed;
     top: 5vw;
