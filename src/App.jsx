@@ -41,6 +41,7 @@ function App() {
 
         setDogs(fetchedData);
         setIndex(0);
+        setListCompleteSec(0);
         setLoading(false);
         setIsFirst(false);
         setIsSecond(false);
@@ -63,12 +64,15 @@ function App() {
   const [currDog, setCurrDog] = useState('');
   const [index, setIndex] = useState(0);
   const [listComplete, setListComplete] = useState(false);
+  const [listCompleteSec, setListCompleteSec] = useState(0);
   function nextDog() {
     let i = index;
     i++;
     if (i >= 5) {
       setListComplete(true);
-      fetchNewData();
+      setListCompleteSec(1);
+      setIndex(0);
+      setLoading(true);
     }
     else {
       setIndex(i);
@@ -87,6 +91,8 @@ function App() {
 
       setDogs(fetchedData);
       setIndex(0);
+      setLoading(false);
+      setListCompleteSec(0);
     }
     catch(error) {
       console.error("Error Fetching Data", error);
@@ -111,6 +117,7 @@ function App() {
     setIsThird(false);
     setIsFourth(false);
     setIsFifth(false);
+    setFirstDog('')
   }
 
 
@@ -134,6 +141,7 @@ function App() {
       <Dialog openModal={modal} closeModal={()=> setModal(false)}></Dialog>
       
       <section id="body-formatting">
+
           <aside id="sidebar">
             <figure id="sidebar-figure">
                 <img id="sidebar-logo" src={logo} alt="logo"></img>
@@ -185,7 +193,7 @@ function App() {
                           </figure>
                           <p className="place-name"> Paw-fect! </p>
                       </div>
-                      <div id="place1-podium" className="podium"></div>
+                      <div id="place1-podium" className={isFirst ? ("podiumAni1"):("podium")}></div>
                   </div>
                   <div id="place2" className="rank-div">
                       <div className="rank-player-info">
@@ -235,35 +243,37 @@ function App() {
                     </figure>
                 </div>
 
-                <div id="list-complete" className="hide">
+                <div id="list-complete" className={listComplete&&(listCompleteSec==1) ? (""):("hide")}>
                     <h3> How happy are you with your results? </h3>
                     <div id="rates">
-                        <figure className="rates-figure">
+                        <figure className="rates-figure" onClick={()=> {setListCompleteSec(2);}}>
                             <img className="rates-img" src={thrilledEm} alt="thrilled"></img>
                             <figcaption className="rates-description"> Thrilled! </figcaption>
                         </figure>
-                        <figure className="rates-figure">
+                        <figure className="rates-figure" onClick={()=> {setListCompleteSec(2);}}>
                             <img className="rates-img" src={happyEm} alt="happy"></img>
                             <figcaption className="rates-description"> Happy </figcaption>
                         </figure>
-                        <figure className="rates-figure">
+                        <figure className="rates-figure" onClick={()=> {setListCompleteSec(2);}}>
                             <img className="rates-img" src={contentEm} alt="content"></img>
                             <figcaption className="rates-description"> Content </figcaption>
                         </figure>
-                        <figure className="rates-figure">
+                        <figure className="rates-figure" onClick={()=> {setListCompleteSec(2);}}>
                             <img className="rates-img" src={sadEm} alt="sad"></img>
                             <figcaption className="rates-description"> Sad </figcaption>
                         </figure>
-                        <figure className="rates-figure">
+                        <figure className="rates-figure" onClick={()=> {setListCompleteSec(2);}}>
                             <img className="rates-img" src={dejectedEm} alt="dejected"></img>
                             <figcaption className="rates-description"> Dejected! </figcaption>
                         </figure>
                     </div>
                 </div>
 
-                <div id="reset" className={listComplete ? (""):("hide")}>
+                <div id="reset" className={listComplete&&(listCompleteSec==2) ? (""):("hide")}>
                     <h3> Thanks for playing! </h3>
-                    <button onClick={()=> {setListComplete(false); resetPlaceBs;}} type="button" id="reset-button"> Play Again </button>
+                    <button onClick={()=> {
+                      setListComplete(false); resetPlaceBs(); fetchNewData();
+                    }} type="button" id="reset-button"> Play Again </button>
                 </div>
 
               </div>

@@ -297,16 +297,17 @@ section#main-content {
 section#main-content > div#ranking {
   display: flex;
   flex-wrap: nowrap;
-  column-gap: 20px;
+  column-gap: 0px;
   min-width: 600px;
+  width: 75%;
   margin: 0px 10px;
   padding-top: 5px;
-  justify-content: space-between;
+  justify-content: center;
   > div.rank-div {
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 18%;
+      width: 20%;
       row-gap: 11vh;
       justify-content: flex-end;
       > div.rank-player-info {
@@ -315,13 +316,16 @@ section#main-content > div#ranking {
           align-items: center;
           width: fit-content;
           row-gap: 10px;
+          padding: 0px 5px;
           > figure.place-figure {
               width: 100%;
               height: fit-content;
               overflow: hidden;
+              padding: 0px 3px;
               > img {
-                  width: auto;
-                  height: 10vh;
+                  max-width: 100%;
+                  min-width: 100%;
+                  height: auto;
               }
           }
           > p.place-name {
@@ -331,13 +335,16 @@ section#main-content > div#ranking {
       
   }
   div.podium {
-      background-color: var(--gold);
-      box-shadow: 0px 0px 15px 8px hsla(53, 100%, 50%, .5);
-      width: calc(100% + 4vh);
       border-left: 3px dashed var(--black);
+      display: none;
+      height: 0px;
+  }
+  div.podiumAni1 {
+    animation: 2s ease-in-out .5s 1 normal forwards grow1;
+    width: 100%;
   }
   div#place1-podium {
-      height: 50vh;
+      max-height: 50vh;
       border-left: none;
   }
   div#place2-podium {
@@ -351,6 +358,20 @@ section#main-content > div#ranking {
   }
   div#place5-podium {
       height: 10vh;
+  }
+}
+@keyframes grow1 {
+  from {
+    display: hidden;
+    height: 0px;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  to {
+    display: block;
+    height: 50vh;
+    box-shadow: 0px 0px 15px 8px hsla(53, 100%, 50%, .5);
+    background-color: var(--gold);
   }
 }
 
